@@ -1,11 +1,11 @@
 const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcrypt");
-const { auth } = require("../middleware/auth");
+const { auth, authAdmin } = require("../middleware/auth");
 const { UserModel, validateLogin, validateUser, createToken } = require("../models/userModel");
 const { ToyModel } = require("../models/toyModel")
 
-router.get("/usersList", async (req, res) => {
+router.get("/usersList",authAdmin, async (req, res) => {
     try {
         let userInfo = await UserModel.find({}, { password: 0 });
         res.json(userInfo);

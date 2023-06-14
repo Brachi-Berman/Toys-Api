@@ -7,6 +7,6 @@ document.querySelector("#domainbtn2").addEventListener("click", () => {
 
 function copydDomain() {
     let copyText = document.getElementById("Domain");
-
+    
     navigator.clipboard.writeText(copyText.innerHTML);
 }
